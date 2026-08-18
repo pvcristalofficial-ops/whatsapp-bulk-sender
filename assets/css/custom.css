@@ -1,0 +1,266 @@
+/* assets/css/custom.css */
+
+/* Core Styles */
+:root {
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --sidebar-bg: #1e293b;
+    --sidebar-hover: #334155;
+    --sidebar-active: #2563eb;
+    --whatsapp-bg: #efeae2;
+    --whatsapp-bubble-bg: #d9fdd3;
+    --whatsapp-bubble-out: #ffffff;
+    --transition-speed: 0.3s;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-element {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Sidebar Styling */
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    transition: all var(--transition-speed) ease;
+    z-index: 1000;
+}
+
+#sidebar-wrapper .sidebar-heading {
+    padding: 1.5rem 1rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#sidebar-wrapper .list-group-item {
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all var(--transition-speed) ease;
+}
+
+#sidebar-wrapper .list-group-item:hover {
+    background-color: var(--sidebar-hover);
+    color: #ffffff;
+    padding-left: 1.75rem;
+}
+
+#sidebar-wrapper .list-group-item.active {
+    background-color: var(--sidebar-active);
+    color: #ffffff;
+    border-radius: 4px;
+    margin: 0.2rem 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+/* Header & Page Layout */
+#page-content-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f1f5f9;
+}
+
+.top-navbar {
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Cards & Layout details */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    background: #ffffff;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card .card-icon {
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.75rem;
+    opacity: 0.15;
+    transition: transform var(--transition-speed) ease;
+}
+
+.stat-card:hover .card-icon {
+    transform: translateY(-50%) scale(1.1) rotate(5deg);
+}
+
+/* WhatsApp Mock Preview */
+.whatsapp-preview-container {
+    background-color: var(--whatsapp-bg);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23b4b4b4' fill-opacity='0.08'%3E%3Cpath fill-rule='evenodd' d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zM11 68c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm58-12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zM32 22c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 40c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z'/%3E%3C/g%3E%3C/svg%3E");
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-height: 480px;
+    overflow-y: auto;
+    border: 1px solid #e2e8f0;
+}
+
+.whatsapp-message {
+    background-color: var(--whatsapp-bubble-out);
+    border-radius: 8px;
+    padding: 0.65rem 0.85rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+    max-width: 85%;
+    margin-bottom: 1rem;
+    position: relative;
+    font-size: 0.925rem;
+    line-height: 1.4;
+}
+
+.whatsapp-message::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 8px 10px 0;
+    border-color: transparent var(--whatsapp-bubble-out) transparent transparent;
+}
+
+.whatsapp-message.sent-bubble {
+    background-color: var(--whatsapp-bubble-bg);
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.whatsapp-message.sent-bubble::before {
+    left: auto;
+    right: -8px;
+    border-width: 10px 8px 0 0;
+    border-color: var(--whatsapp-bubble-bg) transparent transparent transparent;
+}
+
+.whatsapp-header {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: #1f2937;
+    margin-bottom: 0.35rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    padding-bottom: 0.25rem;
+}
+
+.whatsapp-body {
+    white-space: pre-wrap;
+    word-break: break-word;
+    color: #374151;
+}
+
+.whatsapp-footer {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.35rem;
+    font-style: italic;
+}
+
+.whatsapp-meta-info {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+    font-size: 0.7rem;
+    color: #8b939d;
+}
+
+.whatsapp-meta-info i {
+    color: #53bdeb; /* Blue checkmarks for read status */
+}
+
+.whatsapp-buttons-container {
+    margin-top: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.whatsapp-btn {
+    background: #ffffff;
+    border: none;
+    color: #008069;
+    font-weight: 600;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.whatsapp-btn:hover {
+    background: #f8f9fa;
+}
+
+/* Form Loader Overlays */
+.spinner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+    border-radius: 12px;
+}
+
+/* DataTables Overrides */
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: var(--primary-color) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-color) !important;
+    border-radius: 4px;
+}
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background: var(--primary-hover) !important;
+    color: #ffffff !important;
+    border-color: var(--primary-hover) !important;
+    border-radius: 4px;
+}
